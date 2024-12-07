@@ -15,7 +15,7 @@ load_dotenv()
 
 COLLECTION_NAME = os.getenv("COLLECTION_NAME")
 MILVUS_ENDPOINT = os.getenv("MILVUS_ENDPOINT")
-MILVUS_TOKEN = os.getenv("MILVUS_TOKEN")
+#MILVUS_TOKEN = os.getenv("MILVUS_TOKEN")
 MODEL_NAME = os.getenv("MODEL_NAME")
 
 
@@ -33,11 +33,11 @@ streamlit_cropper._recommended_box = _recommended_box2
 
 
 # Get client and model ready
-milvus_client = get_milvus_client(uri=MILVUS_ENDPOINT, token=MILVUS_TOKEN)
+milvus_client = get_milvus_client(uri=MILVUS_ENDPOINT)
 image_encoder = FeatureExtractor(MODEL_NAME)
 
 # Logo
-st.sidebar.image("./pics/Milvus_Logo_Official.png", width=200)
+#st.sidebar.image("./pics/Milvus_Logo_Official.png", width=200)
 
 # Title
 st.title("Image Similarity Search :frame_with_picture: ")
