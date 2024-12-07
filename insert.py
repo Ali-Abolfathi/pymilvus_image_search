@@ -4,7 +4,7 @@ from glob import glob
 from PIL import Image
 from tqdm import tqdm
 
-from encoder import FeatureExtractor
+from encoder import FeatureExtractor, ModelDim
 from milvus_utils import get_milvus_client, create_collection
 
 from dotenv import load_dotenv
@@ -13,13 +13,13 @@ load_dotenv()
 
 COLLECTION_NAME = os.getenv("COLLECTION_NAME")
 MILVUS_ENDPOINT = os.getenv("MILVUS_ENDPOINT")
-MILVUS_TOKEN = os.getenv("MILVUS_TOKEN")
+# MILVUS_TOKEN = os.getenv("MILVUS_TOKEN")
 MODEL_NAME = os.getenv("MODEL_NAME")
-MODEL_DIM = os.getenv("MODEL_DIM")
+MODEL_DIM = ModelDim(MODEL_NAME).get_dim()
 
 data_dir = sys.argv[-1]
 image_encoder = FeatureExtractor(MODEL_NAME)
-milvus_client = get_milvus_client(uri=MILVUS_ENDPOINT, token=MILVUS_TOKEN)
+milvus_client = get_milvus_client(uri=MILVUS_ENDPOINT)
 
 # Create collection
 create_collection(
