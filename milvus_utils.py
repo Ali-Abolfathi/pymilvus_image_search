@@ -3,8 +3,8 @@ from pymilvus import MilvusClient
 
 
 @st.cache_resource
-def get_milvus_client(uri: str, token: str = None) -> MilvusClient:
-    return MilvusClient(uri=uri, token=token)
+def get_milvus_client(uri: str) -> MilvusClient:
+    return MilvusClient(uri=uri)
 
 
 def create_collection(
